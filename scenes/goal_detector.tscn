@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://be1jcdhbbk6da"]
+
+[ext_resource type="Script" path="res://scripts/goal_detector.gd" id="1_msuu5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukrcm"]
+size = Vector2(180, 1080)
+
+[node name="GoalDetector" type="Area2D"]
+position = Vector2(0, 540)
+script = ExtResource("1_msuu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-90, 0)
+shape = SubResource("RectangleShape2D_ukrcm")
