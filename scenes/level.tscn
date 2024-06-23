@@ -1,24 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5fu161rra3ly"]
+[gd_scene load_steps=5 format=3 uid="uid://b5fu161rra3ly"]
 
 [ext_resource type="PackedScene" uid="uid://be1jcdhbbk6da" path="res://scenes/goal_detector.tscn" id="1_r8y3n"]
+[ext_resource type="PackedScene" uid="uid://co0udj3q0ck3u" path="res://scenes/paddles/paddle_player.tscn" id="2_7ttb3"]
+[ext_resource type="PackedScene" uid="uid://bltkhljwl7yp4" path="res://scenes/ball.tscn" id="3_jv0rx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt23y"]
 size = Vector2(1920, 20)
 
 [node name="Level" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color(0.654232, 0.654232, 0.654232, 1)
+position = Vector2(960, 0)
+points = PackedVector2Array(0, 0, 0, 1080)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="ArenaBoundaries" type="StaticBody2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaBoundaries"]
 position = Vector2(960, -10)
 shape = SubResource("RectangleShape2D_tt23y")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ArenaBoundaries"]
 position = Vector2(960, 1090)
 shape = SubResource("RectangleShape2D_tt23y")
 
-[node name="GoalDetector" parent="." instance=ExtResource("1_r8y3n")]
+[node name="GoalDetectors" type="Node2D" parent="."]
 
-[node name="GoalDetector2" parent="." instance=ExtResource("1_r8y3n")]
-position = Vector2(1919, 540)
+[node name="GoalDetector" parent="GoalDetectors" instance=ExtResource("1_r8y3n")]
+
+[node name="GoalDetector2" parent="GoalDetectors" instance=ExtResource("1_r8y3n")]
+position = Vector2(1920, 540)
 rotation = -3.14159
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="PaddlePlayer" parent="Actors" instance=ExtResource("2_7ttb3")]
+
+[node name="PaddlePlayer2" parent="Actors" instance=ExtResource("2_7ttb3")]
+position = Vector2(1845, 540)
+
+[node name="Ball" parent="Actors" instance=ExtResource("3_jv0rx")]
+position = Vector2(960, 540)

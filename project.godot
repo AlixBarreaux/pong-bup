@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Pong! Bup..."
+run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://autoloads/global.gd"
+Events="*res://autoloads/events.gd"
 
 [display]
 
@@ -20,7 +26,14 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="paddles"
+2d_physics/layer_3="balls"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
