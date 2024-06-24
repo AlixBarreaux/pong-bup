@@ -8,11 +8,11 @@ var direction: Vector2 = Vector2(0.0, 0.0)
 
 func _ready():
 	randomize()
-	var initial_direction_x: float = randi() % 2
+	var initial_direction_y: float = randi() % 2
 	
-	if initial_direction_x == 0:
-		initial_direction_x = -1
-	self.direction.x = initial_direction_x
+	if initial_direction_y == 0:
+		initial_direction_y = -1
+	self.direction.y = initial_direction_y
 
 
 func _physics_process(_delta: float) -> void:

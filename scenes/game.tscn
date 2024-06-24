@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://76puc44qif6i"]
+[gd_scene load_steps=3 format=3 uid="uid://76puc44qif6i"]
 
 [ext_resource type="PackedScene" uid="uid://b5fu161rra3ly" path="res://scenes/level.tscn" id="1_jqskf"]
+[ext_resource type="PackedScene" uid="uid://dxqeqvd26m2pd" path="res://scenes/ui/scoring_ui.tscn" id="2_17fjh"]
 
 [node name="Game" type="Node"]
 
@@ -8,17 +9,4 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 112.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
-text = "000000"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HBoxContainer" parent="CanvasLayer" instance=ExtResource("2_17fjh")]

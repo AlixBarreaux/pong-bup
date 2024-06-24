@@ -12,4 +12,4 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	paddle.global_position.y = get_global_mouse_position().y
+	paddle.global_position.x = get_global_mouse_position().x

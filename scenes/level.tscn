@@ -5,40 +5,42 @@
 [ext_resource type="PackedScene" uid="uid://bltkhljwl7yp4" path="res://scenes/ball.tscn" id="3_jv0rx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt23y"]
-size = Vector2(1920, 20)
+size = Vector2(20, 1280)
 
 [node name="Level" type="Node2D"]
 
 [node name="Line2D" type="Line2D" parent="."]
 modulate = Color(0.654232, 0.654232, 0.654232, 1)
-position = Vector2(960, 0)
-points = PackedVector2Array(0, 0, 0, 1080)
+position = Vector2(0, 640)
+points = PackedVector2Array(0, 0, 960, 0)
 
 [node name="ArenaBoundaries" type="StaticBody2D" parent="."]
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaBoundaries"]
-position = Vector2(960, -10)
+position = Vector2(-10, 640)
 shape = SubResource("RectangleShape2D_tt23y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ArenaBoundaries"]
-position = Vector2(960, 1090)
+position = Vector2(970, 640)
 shape = SubResource("RectangleShape2D_tt23y")
 
 [node name="GoalDetectors" type="Node2D" parent="."]
 
 [node name="GoalDetector" parent="GoalDetectors" instance=ExtResource("1_r8y3n")]
+position = Vector2(484, -100)
 
 [node name="GoalDetector2" parent="GoalDetectors" instance=ExtResource("1_r8y3n")]
-position = Vector2(1920, 540)
+position = Vector2(480, 1380)
 rotation = -3.14159
 
 [node name="Actors" type="Node2D" parent="."]
 
+[node name="Ball" parent="Actors" instance=ExtResource("3_jv0rx")]
+position = Vector2(480, 640)
+
 [node name="PaddlePlayer" parent="Actors" instance=ExtResource("2_7ttb3")]
+position = Vector2(480, 100)
 
 [node name="PaddlePlayer2" parent="Actors" instance=ExtResource("2_7ttb3")]
-position = Vector2(1845, 540)
-
-[node name="Ball" parent="Actors" instance=ExtResource("3_jv0rx")]
-position = Vector2(960, 540)
+position = Vector2(480, 1180)
