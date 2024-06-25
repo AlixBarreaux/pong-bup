@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxqeqvd26m2pd"]
+
+[ext_resource type="PackedScene" uid="uid://csxeai4npmkof" path="res://scenes/ui/score_label.tscn" id="1_2nb3f"]
+[ext_resource type="Script" path="res://scripts/ui/scoring_ui.gd" id="1_20kdl"]
+
+[node name="ScoringUI" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 112.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_20kdl")
+
+[node name="ScoreLabel" parent="." instance=ExtResource("1_2nb3f")]
+layout_mode = 2
+
+[node name="ScoreLabel2" parent="." instance=ExtResource("1_2nb3f")]
+layout_mode = 2

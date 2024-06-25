@@ -2,17 +2,71 @@ extends CharacterBody2D
 class_name Ball
 
 
-var speed: float = 800.0
+var last_hit_by_team_id: int = 0
+
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+# Used by other scenes calculating their own boundaries
+@onready var colli_shape_square_extents: float = collision_shape_2d.get_shape().get_size().x
+
+@export var speed: float = 800.0
 var direction: Vector2 = Vector2(0.0, 0.0)
 
 
-func _ready():
-	randomize()
-	var initial_direction_y: float = randi() % 2
+var kicker_team_id: int = 0
+
+func launch() -> void:
+	print(self.name, ": Launch!")
 	
-	if initial_direction_y == 0:
-		initial_direction_y = -1
-	self.direction.y = initial_direction_y
+	if self.kicker_team_id == 1:
+		self.direction.y = 1
+	else:
+		self.direction.y = -1
+
+
+func stop() -> void:
+	print(self.name, ": Stop!")
+	self.direction = Vector2(0.0, 0.0)
+
+
+@export var arena_center: ArenaCenter = null
+
+
+func on_round_ready() -> void:
+	self.show()
+
+
+func swap_kicker() -> void:
+	if self.kicker_team_id == 1:
+		self.kicker_team_id = 2
+	else:
+		self.kicker_team_id = 1
+	print(self.name, ": Kicker changed on goal to: ", kicker_team_id)
+
+
+func on_goal_scored(_last_hit_by_team_id: int, cage_owner_team_id: int, _value: int) -> void:
+	stop()
+	self.hide()
+	self.set_global_position(arena_center.get_global_position())
+	
+	self.swap_kicker()
+
+
+func on_launch_authorized() -> void:
+	self.launch()
+
+
+func _ready() -> void:
+	assert(arena_center != null)
+	
+	Events.round_ready.connect(on_round_ready)
+	Events.ball_launch_authorized.connect(on_launch_authorized)
+	Events.goal_scored.connect(on_goal_scored)
+	
+	randomize()
+	self.kicker_team_id = randi_range(1, Global.team_count)
+	print(self.name, ": Kicker initialized on ready: ", kicker_team_id)
+	
+	self.launch()
 
 
 func _physics_process(_delta: float) -> void:

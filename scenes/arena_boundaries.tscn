@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://4gg6y2e5gugh"]
+
+[ext_resource type="Script" path="res://scripts/arena_boundaries.gd" id="1_sv6vw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt23y"]
+size = Vector2(20, 1280)
+
+[node name="ArenaBoundaries" type="StaticBody2D"]
+collision_mask = 6
+script = ExtResource("1_sv6vw")
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 640)
+shape = SubResource("RectangleShape2D_tt23y")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="."]
+position = Vector2(970, 640)
+shape = SubResource("RectangleShape2D_tt23y")

@@ -4,4 +4,7 @@ extends Node
 
 signal game_started
 
-signal goal_scored
+signal round_ready
+signal ball_launch_authorized
+
+signal goal_scored(last_hit_by_team_id: int, cage_owner_team_id: int, value: int)
