@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b5fu161rra3ly"]
 
-[ext_resource type="Script" path="res://scenes/arena_center.gd" id="1_udjgd"]
+[ext_resource type="Script" path="res://scripts/arena_center.gd" id="1_gqqxv"]
 [ext_resource type="PackedScene" uid="uid://co0udj3q0ck3u" path="res://scenes/paddles/paddle_player.tscn" id="2_7ttb3"]
 [ext_resource type="PackedScene" uid="uid://4gg6y2e5gugh" path="res://scenes/arena_boundaries.tscn" id="2_htsoi"]
 [ext_resource type="PackedScene" uid="uid://bltkhljwl7yp4" path="res://scenes/ball.tscn" id="3_jv0rx"]
@@ -12,7 +12,7 @@
 
 [node name="ArenaCenter" type="Marker2D" parent="."]
 position = Vector2(480, 640)
-script = ExtResource("1_udjgd")
+script = ExtResource("1_gqqxv")
 
 [node name="Line2D" type="Line2D" parent="."]
 modulate = Color(0.654232, 0.654232, 0.654232, 1)
