@@ -15,8 +15,6 @@ var direction: Vector2 = Vector2(0.0, 0.0)
 var kicker_team_id: int = 0
 
 func launch() -> void:
-	print(self.name, ": Launch!")
-	
 	if self.kicker_team_id == 1:
 		self.direction.y = 1
 	else:
@@ -24,7 +22,6 @@ func launch() -> void:
 
 
 func stop() -> void:
-	print(self.name, ": Stop!")
 	self.direction = Vector2(0.0, 0.0)
 
 
@@ -40,11 +37,10 @@ func swap_kicker() -> void:
 		self.kicker_team_id = 2
 	else:
 		self.kicker_team_id = 1
-	print(self.name, ": Kicker changed on goal to: ", kicker_team_id)
 
 
-func on_goal_scored(_last_hit_by_team_id: int, cage_owner_team_id: int, _value: int) -> void:
-	stop()
+func on_goal_scored(_last_hit_by_team_id: int, _cage_owner_team_id: int, _value: int) -> void:
+	self.stop()
 	self.hide()
 	self.set_global_position(arena_center.get_global_position())
 	
@@ -63,9 +59,7 @@ func _ready() -> void:
 	Events.goal_scored.connect(on_goal_scored)
 	
 	randomize()
-	self.kicker_team_id = randi_range(1, Global.team_count)
-	print(self.name, ": Kicker initialized on ready: ", kicker_team_id)
-	
+	self.kicker_team_id = randi_range(1, Global.team_count)	
 	self.launch()
 
 

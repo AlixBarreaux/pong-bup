@@ -36,9 +36,7 @@ signal score_increased(team_id: int, value: int)
 # Value: New updated score
 signal score_changed(team_id: int, value: int)
 
-func increase_score_of_team(last_hit_by_team_id: int, cage_owner_team_id: int, value: int) -> void:
-	print("Increase BEFORE goal: ", teams)
-	
+func increase_score_of_team(_last_hit_by_team_id: int, cage_owner_team_id: int, value: int) -> void:
 	var team_id_receiving_points: int = 0
 	var updated_score: int = 0
 	
@@ -48,8 +46,6 @@ func increase_score_of_team(last_hit_by_team_id: int, cage_owner_team_id: int, v
 			
 			team_id_receiving_points = team.id
 			updated_score = team.score
-		
-	print("Increase AFTER goal: ", teams)
 	
 	self.score_increased.emit(team_id_receiving_points, value)
 	self.score_changed.emit(team_id_receiving_points, updated_score)

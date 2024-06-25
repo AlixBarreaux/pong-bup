@@ -11,5 +11,4 @@ func _ready() -> void:
 
 
 func _on_timeout() -> void:
-	print(self.name, ": Ball launched emitted!")
 	Events.ball_launch_authorized.emit()

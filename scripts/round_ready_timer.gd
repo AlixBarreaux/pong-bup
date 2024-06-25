@@ -11,5 +11,4 @@ func _ready() -> void:
 
 
 func _on_timeout() -> void:
-	print(self.name, ": Round ready!")
 	Events.round_ready.emit()
