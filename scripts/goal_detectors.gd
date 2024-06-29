@@ -19,10 +19,10 @@ func _ready() -> void:
 	
 	var ball: Ball = balls.get_child(0)
 	
-	var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
-	var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
+	var viewport_width: float = ViewportCalculations.get_viewport_width()
+	var viewport_height: float = ViewportCalculations.get_viewport_height()
 	
-	var half_viewport_width: float = viewport_width / 2
+	var half_viewport_width: float = ViewportCalculations.get_half_viewport_width()
 	
 	var collision_shape_height: float = 200.0
 	var half_collision_shape_height: float = collision_shape_height / 2

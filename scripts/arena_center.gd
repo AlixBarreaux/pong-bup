@@ -3,7 +3,10 @@ class_name ArenaCenter
 
 
 func _ready() -> void:
-	var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
-	var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
+	var viewport_width: float = ViewportCalculations.get_viewport_width()
+	var viewport_height: float = ViewportCalculations.get_viewport_height()
 	
-	self.set_global_position(Vector2((viewport_width / 2), (viewport_height / 2)))
+	var half_viewport_width: float = ViewportCalculations.get_half_viewport_width()
+	var half_viewport_height: float = ViewportCalculations.get_half_viewport_height()
+	
+	self.set_global_position(Vector2(half_viewport_width, half_viewport_height))

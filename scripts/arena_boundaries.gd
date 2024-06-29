@@ -7,10 +7,10 @@ class_name ArenaBoundaries
 
 
 func _ready() -> void:
-	var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
-	var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
+	var viewport_width: float = ViewportCalculations.get_viewport_width()
+	var viewport_height: float = ViewportCalculations.get_viewport_height()
 	
-	var half_viewport_height: float = viewport_height / 2
+	var half_viewport_height: float = ViewportCalculations.get_half_viewport_height()
 	
 	var collision_shape_width: float = 200.0
 	var half_collision_shape_width: float = collision_shape_width / 2
