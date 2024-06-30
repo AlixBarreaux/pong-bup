@@ -19,7 +19,6 @@ func _ready() -> void:
 	
 	var ball: Ball = balls.get_child(0)
 	
-	var viewport_width: float = ViewportCalculations.get_viewport_width()
 	var viewport_height: float = ViewportCalculations.get_viewport_height()
 	
 	var half_viewport_width: float = ViewportCalculations.get_half_viewport_width()
