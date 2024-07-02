@@ -59,8 +59,11 @@ func _ready() -> void:
 	Events.goal_scored.connect(on_goal_scored)
 	
 	randomize()
-	self.kicker_team_id = randi_range(1, Global.team_count)
+	self.pick_random_kicker()
 	self.launch()
+
+func pick_random_kicker() -> void:
+	self.kicker_team_id = randi_range(1, Global.team_count)
 
 
 func _physics_process(_delta: float) -> void:
