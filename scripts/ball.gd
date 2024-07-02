@@ -59,7 +59,7 @@ func _ready() -> void:
 	Events.goal_scored.connect(on_goal_scored)
 	
 	randomize()
-	self.kicker_team_id = randi_range(1, Global.team_count)	
+	self.kicker_team_id = randi_range(1, Global.team_count)
 	self.launch()
 
 
@@ -70,8 +70,14 @@ func _physics_process(_delta: float) -> void:
 		var collision: KinematicCollision2D = get_slide_collision(0)
 		
 		if collision.get_collider() is Paddle:
-			var paddle: Paddle = collision.get_collider()
-			direction = (self.global_position - paddle.global_position).normalized()
+			var paddle: Paddle = collision.get_collider() as Paddle
+			
+			var distance_between_paddle_and_ball: float = paddle.get_global_position().x - collision.get_position().x
+			var new_direction_x: float = -(distance_between_paddle_and_ball / paddle.get_half_width())
+			
+			direction.x = new_direction_x
+			self.direction.y *= -1
+			direction = direction.normalized()
 		else:
 			direction = direction.bounce(collision.get_normal())
 	
