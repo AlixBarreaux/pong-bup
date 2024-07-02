@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5fu161rra3ly"]
+[gd_scene load_steps=9 format=3 uid="uid://b5fu161rra3ly"]
 
 [ext_resource type="Script" path="res://scripts/arena_center.gd" id="1_gqqxv"]
-[ext_resource type="PackedScene" uid="uid://co0udj3q0ck3u" path="res://scenes/paddles/paddle_player.tscn" id="2_7ttb3"]
+[ext_resource type="PackedScene" uid="uid://co0udj3q0ck3u" path="res://scenes/actors/paddles/paddle_player.tscn" id="2_7ttb3"]
 [ext_resource type="PackedScene" uid="uid://4gg6y2e5gugh" path="res://scenes/arena_boundaries.tscn" id="2_htsoi"]
-[ext_resource type="PackedScene" uid="uid://bltkhljwl7yp4" path="res://scenes/ball.tscn" id="3_jv0rx"]
+[ext_resource type="PackedScene" uid="uid://bltkhljwl7yp4" path="res://scenes/actors/ball.tscn" id="3_jv0rx"]
 [ext_resource type="PackedScene" uid="uid://ds65tg1ibwfhm" path="res://scenes/goal_detectors.tscn" id="3_kh5r0"]
+[ext_resource type="PackedScene" uid="uid://crvlv4lm4rgg2" path="res://scenes/actors/paddles/paddle_ai.tscn" id="5_byl24"]
 [ext_resource type="PackedScene" uid="uid://blnujvjok44oq" path="res://scenes/round_ready_timer.tscn" id="6_ni7n4"]
 [ext_resource type="PackedScene" uid="uid://c03axt3dwkmrc" path="res://scenes/ball_launch_authorization_timer.tscn" id="7_mn8km"]
 
@@ -34,7 +35,7 @@ arena_center = NodePath("../../../ArenaCenter")
 [node name="PaddlePlayer" parent="Actors/Paddles" instance=ExtResource("2_7ttb3")]
 position = Vector2(480, 1180)
 
-[node name="PaddlePlayer2" parent="Actors/Paddles" instance=ExtResource("2_7ttb3")]
+[node name="PaddleAI" parent="Actors/Paddles" instance=ExtResource("5_byl24")]
 position = Vector2(480, 100)
 
 [node name="GoalDetectors" parent="." node_paths=PackedStringArray("balls") instance=ExtResource("3_kh5r0")]
