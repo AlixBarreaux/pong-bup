@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo4sdjbewub8n"]
+
+[ext_resource type="Script" path="res://scripts/controllers-paddle/controller_paddle_ai.gd" id="1_dt8gg"]
+[ext_resource type="PackedScene" uid="uid://ct4ev88x1qgv2" path="res://scenes/controllers-paddle/controller_paddle.tscn" id="1_pde2m"]
+
+[node name="ControllerPaddleAI" instance=ExtResource("1_pde2m")]
+script = ExtResource("1_dt8gg")

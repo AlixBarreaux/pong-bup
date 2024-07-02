@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://crvlv4lm4rgg2"]
+
+[ext_resource type="PackedScene" uid="uid://rvbjvyssn2oa" path="res://scenes/actors/paddles/paddle.tscn" id="1_xsx4e"]
+[ext_resource type="PackedScene" uid="uid://bo4sdjbewub8n" path="res://scenes/controllers-paddle/controller_paddle_ai.tscn" id="2_a81dy"]
+
+[node name="PaddleAI" instance=ExtResource("1_xsx4e")]
+
+[node name="ControllerPaddleAI" parent="." index="2" node_paths=PackedStringArray("paddle") instance=ExtResource("2_a81dy")]
+paddle = NodePath("..")
