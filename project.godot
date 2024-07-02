@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://resources/audio-bus-layouts/main_audio_bus_layout.tres"
+
 [autoload]
 
 Global="*res://autoloads/global.gd"
@@ -30,6 +34,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
+[gui]
+
+theme/custom="res://resources/themes/main_theme.tres"
+
 [layer_names]
 
 2d_physics/layer_1="environment"
@@ -40,4 +48,5 @@ window/handheld/orientation=1
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
