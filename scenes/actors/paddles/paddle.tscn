@@ -17,5 +17,3 @@ polygon = PackedVector2Array(0, 0, 300, 0, 300, 50, 0, 50)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vgm5n")
 debug_color = Color(0.874489, 0.345434, 3.85046e-07, 0.42)
-
-[node name="Marker2D" type="Marker2D" parent="."]
