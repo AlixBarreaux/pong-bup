@@ -7,17 +7,6 @@ class_name ControllerPaddle
 
 func _ready() -> void:
 	if paddle == null:
-		paddle = self.get_parent()
+		if self.get_parent() is Paddle:
+			paddle = self.get_parent()
 	assert(paddle != null)
-
-
-#enum CardinalDirectionsFour {
-	#Left,
-	#Right,
-	#Up,
-	#Down
-#}
-#
-#func move() -> void:
-	#match CardinalDirectionsFour:
-		#

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bltkhljwl7yp4"]
 
-[ext_resource type="Script" path="res://scripts/ball.gd" id="1_b6qj4"]
+[ext_resource type="Script" path="res://scripts/actors/ball.gd" id="1_b6qj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5bkv"]
 size = Vector2(50, 50)
@@ -8,6 +8,7 @@ size = Vector2(50, 50)
 [node name="Ball" type="CharacterBody2D" groups=["balls"]]
 collision_layer = 4
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_b6qj4")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

@@ -8,7 +8,7 @@ var last_hit_by_team_id: int = 0
 # Used by other scenes calculating their own boundaries
 @onready var colli_shape_square_extents: float = collision_shape_2d.get_shape().get_size().x
 
-@export var speed: float = 800.0
+@export var speed: float = 900.0
 var direction: Vector2 = Vector2(0.0, 0.0)
 
 
@@ -66,6 +66,8 @@ func pick_random_kicker() -> void:
 	self.kicker_team_id = randi_range(1, Global.team_count)
 
 
+signal collided_with_paddle(paddle: Paddle)
+
 func _physics_process(_delta: float) -> void:
 	self.velocity = Vector2(0.0, 0.0)
 	
@@ -81,6 +83,7 @@ func _physics_process(_delta: float) -> void:
 			direction.x = new_direction_x
 			self.direction.y *= -1
 			direction = direction.normalized()
+			collided_with_paddle.emit(paddle)
 		else:
 			direction = direction.bounce(collision.get_normal())
 	

@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://rvbjvyssn2oa"]
 
-[ext_resource type="Script" path="res://scripts/paddle.gd" id="1_6x57x"]
+[ext_resource type="Script" path="res://scripts/actors/paddle.gd" id="1_6x57x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgm5n"]
-size = Vector2(300, 50)
+size = Vector2(150, 50)
 
-[node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
+[node name="Paddle" type="StaticBody2D" groups=["paddles"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_6x57x")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-150, -25)
-polygon = PackedVector2Array(0, 0, 300, 0, 300, 50, 0, 50)
+position = Vector2(-75, -25)
+polygon = PackedVector2Array(0, 0, 150, 0, 150, 50, 0, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vgm5n")

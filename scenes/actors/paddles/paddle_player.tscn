@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://co0udj3q0ck3u"]
 
 [ext_resource type="PackedScene" uid="uid://rvbjvyssn2oa" path="res://scenes/actors/paddles/paddle.tscn" id="1_kfxov"]
-[ext_resource type="PackedScene" uid="uid://c8wsten5kqbp3" path="res://scenes/controllers-paddle/controller_paddle_player.tscn" id="2_qo3ou"]
+[ext_resource type="PackedScene" uid="uid://c8wsten5kqbp3" path="res://scenes/controllers-paddle/controller_paddle_player_keyboard.tscn" id="2_bjar8"]
 
 [node name="PaddlePlayer" instance=ExtResource("1_kfxov")]
 
-[node name="ControllerPaddlePlayer" parent="." index="2" instance=ExtResource("2_qo3ou")]
+[node name="ControllerPaddlePlayer" parent="." index="2" instance=ExtResource("2_bjar8")]
