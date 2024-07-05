@@ -36,7 +36,7 @@ arena_center = NodePath("../../../ArenaCenter")
 position = Vector2(480, 1180)
 
 [node name="PaddleAI" parent="Actors/Paddles" instance=ExtResource("5_byl24")]
-position = Vector2(209, 100)
+position = Vector2(480, 100)
 
 [node name="GoalDetectors" parent="." node_paths=PackedStringArray("balls") instance=ExtResource("3_kh5r0")]
 balls = NodePath("../Actors/Balls")
