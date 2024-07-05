@@ -5,6 +5,8 @@
 
 [node name="ControllerPaddleAI" instance=ExtResource("1_pde2m")]
 script = ExtResource("1_dt8gg")
+min_reaction_time = 0.2
+max_reaction_time = 0.4
 
 [node name="ReactionTimer" type="Timer" parent="." index="0"]
 one_shot = true
