@@ -23,6 +23,7 @@ buses/default_bus_layout="res://resources/audio-bus-layouts/main_audio_bus_layou
 
 Global="*res://autoloads/global.gd"
 Events="*res://autoloads/events.gd"
+Settings="*res://autoloads/settings.gd"
 
 [display]
 
