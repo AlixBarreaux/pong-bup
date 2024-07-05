@@ -27,10 +27,10 @@ func set_state(new_state: States) -> void:
 
 
 func chase_ball() -> void:
-	if ball_position.x < paddle.global_position.x - paddle.get_half_width():
-		paddle.direction.x = -1.0
-	elif ball_position.x > paddle.global_position.x + paddle.get_half_width():
-		paddle.direction.x = 1.0
+	if ball_position.x < paddle.get_global_position().x - paddle.get_half_width():
+		paddle.move_left()
+	elif ball_position.x > paddle.get_global_position().x + paddle.get_half_width():
+		paddle.move_right()
 	else:
 		self.stop()
 
@@ -43,13 +43,13 @@ func move_to_arena_center_x() -> void:
 		self.set_state(States.Stopped)
 	else:
 		if paddle.get_global_position().x < arena_center_position_x:
-			paddle.direction.x = 1.0
+			paddle.move_right()
 		else:
-			paddle.direction.x = -1.0
+			paddle.move_left()
 
 
 func stop() -> void:
-	paddle.direction.x = 0.0
+	paddle.stop_moving_x()
 
 
 func on_collided_with_paddle(sent_paddle: Paddle) -> void:
@@ -72,7 +72,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	ball_position = ball.global_position
+	ball_position = ball.get_global_position()
 	
 	match state:
 		States.MovingToArenaCenter:

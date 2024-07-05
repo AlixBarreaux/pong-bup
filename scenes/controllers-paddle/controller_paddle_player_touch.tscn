@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8fsanw2f21ei"]
+
+[ext_resource type="PackedScene" uid="uid://ct4ev88x1qgv2" path="res://scenes/controllers-paddle/controller_paddle.tscn" id="1_d2o7w"]
+[ext_resource type="Script" path="res://scripts/controllers-paddle/controller_paddle_player_touch.gd" id="2_un01t"]
+
+[node name="ControllerPaddlePlayerTouch" instance=ExtResource("1_d2o7w")]
+script = ExtResource("2_un01t")

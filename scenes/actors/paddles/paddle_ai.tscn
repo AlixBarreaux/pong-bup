@@ -6,6 +6,4 @@
 [node name="PaddleAI" instance=ExtResource("1_xsx4e")]
 
 [node name="ControllerPaddleAI" parent="." index="2" node_paths=PackedStringArray("paddle") instance=ExtResource("2_a81dy")]
-min_reaction_time = 0.2
-max_reaction_time = 0.4
 paddle = NodePath("..")

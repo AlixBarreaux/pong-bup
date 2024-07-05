@@ -3,8 +3,6 @@ class_name Paddle
 
 
 @export var speed: float = 500.0
-var direction: Vector2 = Vector2(0.0, 0.0)
-
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var coll_shape: Shape2D = collision_shape_2d.get_shape()
@@ -25,17 +23,31 @@ func get_half_height() -> float:
 	return self.get_height() / 2
 
 
+var direction: Vector2 = Vector2(0.0, 0.0)
 var velocity: Vector2 = Vector2(0.0, 0.0)
 
-#@onready var initial_position: Vector2 = self.get_global_position()
+
+func stop_moving_on_arena_boundaries() -> void:
+	if self.get_global_position().x < self.get_half_width():
+		if self.direction.x == -1:
+			self.stop_moving_x()
+	elif self.get_global_position().x > ViewportCalculations.get_viewport_width() - self.get_half_width():
+		if self.direction.x == 1:
+			self.stop_moving_x()
+
+
+func move_left() -> void:
+	self.direction.x = -1
+
+func move_right() -> void:
+	self.direction.x = 1
+
+
+func stop_moving_x() -> void:
+	self.direction.x = 0
+
 
 func _physics_process(delta: float) -> void:
-	#self.set_velocity(Vector2(0.0, 0.0))
+	self.stop_moving_on_arena_boundaries()
 	self.velocity = self.direction * self.speed * delta
 	self.global_position += self.velocity
-	
-	#self.set_velocity(self.direction * self.speed)
-	#self.set_velocity(Vector2((self.direction.x * self.speed), 0.0))
-	
-	#self.move_and_slide()
-	#self.set_global_position(Vector2(get_global_position().x, initial_position.y))
