@@ -26,8 +26,6 @@ signal score_changed(team_id: int, value: int)
 
 
 func reset_all_team_scores() -> void:
-	var score_reset_value: int = 0
-	
 	for team in teams:
 		self.set_score_of_team(team.id, 0)
 
