@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5fu161rra3ly"]
+[gd_scene load_steps=12 format=3 uid="uid://b5fu161rra3ly"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_b64sh"]
 [ext_resource type="Script" path="res://scripts/arena_center.gd" id="1_gqqxv"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://crvlv4lm4rgg2" path="res://scenes/actors/paddles/paddle_ai.tscn" id="5_byl24"]
 [ext_resource type="PackedScene" uid="uid://blnujvjok44oq" path="res://scenes/round_ready_timer.tscn" id="6_ni7n4"]
 [ext_resource type="PackedScene" uid="uid://c03axt3dwkmrc" path="res://scenes/ball_launch_authorization_timer.tscn" id="7_mn8km"]
+[ext_resource type="PackedScene" uid="uid://dxqeqvd26m2pd" path="res://scenes/ui/scoring_ui.tscn" id="10_5tesw"]
+[ext_resource type="PackedScene" uid="uid://c80x5s0ow3ol3" path="res://scenes/ui/pause_menu_ui.tscn" id="10_nn7l2"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_b64sh")
@@ -50,3 +52,12 @@ balls = NodePath("../Actors/Balls")
 wait_time = 3.0
 
 [node name="BallLaunchAuthorizationTimer" parent="Timers" instance=ExtResource("7_mn8km")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" parent="CanvasLayer" instance=ExtResource("10_5tesw")]
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenuUI" parent="CanvasLayer" instance=ExtResource("10_nn7l2")]
+visible = false
+metadata/_edit_use_anchors_ = true
