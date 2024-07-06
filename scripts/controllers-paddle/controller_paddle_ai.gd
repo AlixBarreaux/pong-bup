@@ -63,9 +63,15 @@ func on_collided_with_paddle(sent_paddle: Paddle) -> void:
 var prevent_loop_through_same_state: bool = false
 
 
+func on_goal_scored(_last_hit_by_team_id: int, _cage_owner_team_id: int, _value: int) -> void:
+	self.set_state(States.MovingToArenaCenter)
+
+
 func _ready() -> void:
 	ball = get_tree().get_first_node_in_group("balls") as Ball
 	assert(ball != null)
+	
+	Events.goal_scored.connect(on_goal_scored)
 	
 	ball.collided_with_paddle.connect(on_collided_with_paddle)
 	self.set_state(self.initial_state)
