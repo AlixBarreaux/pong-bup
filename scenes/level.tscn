@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5fu161rra3ly"]
+[gd_scene load_steps=10 format=3 uid="uid://b5fu161rra3ly"]
 
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_b64sh"]
 [ext_resource type="Script" path="res://scripts/arena_center.gd" id="1_gqqxv"]
 [ext_resource type="PackedScene" uid="uid://co0udj3q0ck3u" path="res://scenes/actors/paddles/paddle_player.tscn" id="2_7ttb3"]
 [ext_resource type="PackedScene" uid="uid://4gg6y2e5gugh" path="res://scenes/arena_boundaries.tscn" id="2_htsoi"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c03axt3dwkmrc" path="res://scenes/ball_launch_authorization_timer.tscn" id="7_mn8km"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_b64sh")
 
 [node name="ArenaCenter" type="Marker2D" parent="."]
 position = Vector2(480, 640)
@@ -26,17 +28,18 @@ points = PackedVector2Array(0, 0, 960, 0)
 
 [node name="Balls" type="Node2D" parent="Actors"]
 
-[node name="Ball" parent="Actors/Balls" node_paths=PackedStringArray("arena_center") instance=ExtResource("3_jv0rx")]
+[node name="Ball" parent="Actors/Balls" instance=ExtResource("3_jv0rx")]
 position = Vector2(480, 640)
-arena_center = NodePath("../../../ArenaCenter")
 
 [node name="Paddles" type="Node2D" parent="Actors"]
 
 [node name="PaddlePlayer" parent="Actors/Paddles" instance=ExtResource("2_7ttb3")]
 position = Vector2(480, 1180)
+team_id = 1
 
 [node name="PaddleAI" parent="Actors/Paddles" instance=ExtResource("5_byl24")]
 position = Vector2(480, 100)
+team_id = 2
 
 [node name="GoalDetectors" parent="." node_paths=PackedStringArray("balls") instance=ExtResource("3_kh5r0")]
 balls = NodePath("../Actors/Balls")

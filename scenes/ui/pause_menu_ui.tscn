@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://c80x5s0ow3ol3"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu_ui.gd" id="1_fc4fp"]
+[ext_resource type="PackedScene" uid="uid://cwu8msxj23f2y" path="res://scenes/ui/restart_button.tscn" id="2_2i1e5"]
+
+[node name="PauseMenuUI" type="Control" node_paths=PackedStringArray("first_element_to_grab_focus")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fc4fp")
+first_element_to_grab_focus = NodePath("Panel/Container/ResumeButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -141.0
+offset_right = 343.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.181
+anchor_right = 0.92
+anchor_bottom = 0.819
+offset_left = 0.119995
+offset_top = -0.0420036
+offset_right = -0.119995
+offset_bottom = 0.0419769
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Panel/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../RestartButton")
+focus_next = NodePath("../RestartButton")
+focus_previous = NodePath("../RestartButton")
+text = "Play"
+
+[node name="RestartButton" parent="Panel/Container" instance=ExtResource("2_2i1e5")]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="Panel/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../RestartButton")
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_right = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../RestartButton")
+text = "Quit"
+
+[connection signal="pressed" from="Panel/Container/ResumeButton" to="." method="_on_resume_button_pressed"]

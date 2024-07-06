@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwu8msxj23f2y"]
+
+[ext_resource type="Script" path="res://scripts/ui/restart_button.gd" id="1_brwv3"]
+
+[node name="RestartButton" type="Button"]
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ResumeButton")
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../ResumeButton")
+text = "Restart"
+script = ExtResource("1_brwv3")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

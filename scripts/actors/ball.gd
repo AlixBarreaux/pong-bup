@@ -25,7 +25,25 @@ func stop() -> void:
 	self.direction = Vector2(0.0, 0.0)
 
 
-@export var arena_center: ArenaCenter = null
+func pick_random_kicker() -> void:
+	self.kicker_team_id = randi_range(1, Global.team_count)
+
+
+var initial_position: Vector2 = ViewportCalculations.get_viewport_center_global_position()
+
+func set_global_position_to_initial_position() -> void:
+	self.set_global_position(initial_position)
+
+
+func reset() -> void:
+	print(self.name, ": Reset!")
+	self.set_global_position_to_initial_position()
+	self.pick_random_kicker()
+
+
+func on_new_game_started() -> void:
+	self.stop()
+	self.reset()
 
 
 func on_round_ready() -> void:
@@ -42,8 +60,7 @@ func swap_kicker() -> void:
 func on_goal_scored(_last_hit_by_team_id: int, _cage_owner_team_id: int, _value: int) -> void:
 	self.stop()
 	self.hide()
-	self.set_global_position(arena_center.get_global_position())
-	
+	self.set_global_position_to_initial_position()
 	self.swap_kicker()
 
 
@@ -52,18 +69,12 @@ func on_launch_authorized() -> void:
 
 
 func _ready() -> void:
-	assert(arena_center != null)
+	randomize()
 	
+	Events.new_game_started.connect(on_new_game_started)
 	Events.round_ready.connect(on_round_ready)
 	Events.ball_launch_authorized.connect(on_launch_authorized)
 	Events.goal_scored.connect(on_goal_scored)
-	
-	randomize()
-	self.pick_random_kicker()
-	self.launch()
-
-func pick_random_kicker() -> void:
-	self.kicker_team_id = randi_range(1, Global.team_count)
 
 
 signal collided_with_paddle(paddle: Paddle)
