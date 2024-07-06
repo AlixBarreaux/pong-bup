@@ -36,7 +36,6 @@ func set_global_position_to_initial_position() -> void:
 
 
 func reset() -> void:
-	print(self.name, ": Reset!")
 	self.set_global_position_to_initial_position()
 	self.pick_random_kicker()
 
