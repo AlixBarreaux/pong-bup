@@ -6,11 +6,11 @@ class_name PauseMenuUI
 
 
 func enable() -> void:
-	self.set_process_unhandled_key_input(false)
+	self.set_process_unhandled_key_input(true)
 
 
 func disable() -> void:
-	self.set_process_unhandled_key_input(true)
+	self.set_process_unhandled_key_input(false)
 
 
 func on_new_game_started() -> void:
