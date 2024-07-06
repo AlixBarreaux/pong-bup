@@ -5,8 +5,22 @@ class_name PauseMenuUI
 @export var first_element_to_grab_focus: Control = null
 
 
+func enable() -> void:
+	self.set_process_unhandled_key_input(false)
+
+
+func disable() -> void:
+	self.set_process_unhandled_key_input(true)
+
+
 func on_new_game_started() -> void:
 	self.hide()
+	self.enable()
+
+
+func on_game_over() -> void:
+	self.hide()
+	self.disable()
 
 
 func _ready() -> void:
@@ -14,6 +28,7 @@ func _ready() -> void:
 	assert(first_element_to_grab_focus != null)
 	
 	Events.new_game_started.connect(on_new_game_started)
+	Events.game_over.connect(on_game_over)
 
 
 func _unhandled_key_input(_event: InputEvent) -> void:
